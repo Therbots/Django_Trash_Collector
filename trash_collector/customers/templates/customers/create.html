@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Customer</title>
+    <title>Document</title>
 </head>
 <body>
     <form action="{% url 'customers:create' %}" method="post">
         {% csrf_token %}
-        Name: <input type='text' name='name' id='name'><br/>
-        Address: <input type='text' name='address' id='address'><br/>
-        Zip Code: <input type="text" name="zip_code" id="zip_code"><br/>
-        Weekly PickUp Day: <input type="text" name="weekly_pickup_day" id="weekly_pickup_day"><br/>
-        <input type="submit" value="Submit"><br/>
+        Name: <input type="text" name="name" id="name"><br />
+        Address: <input type="text" name="address" id="address"><br />
+        Zip Code: <input type="text" name="zip_code" id="zip_code"><br />
+        Weekly Pickup Date: <input typr="text" name="weekly_pickup_date" id="weekly_pickup_date"><br />
+        <input type="submit" value="Submit">
     </form>
 </body>
 </html>
