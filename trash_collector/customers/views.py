@@ -4,8 +4,6 @@ from django.db import models
 from django.http.response import HttpResponseRedirect
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
 from .models import Customer
 # Create your views here.
 
@@ -30,12 +28,12 @@ def index(request):
 
 def create(request):
     if request.method == "POST":
-        name = request.POST.get('name')
         user = request.user
-        address = request.POST.get('address'),
-        zip_code = request.POST.get('zip_code'),
-        weekly_pickup_day = request.POST.get('weekly_pickup_day'),
-        new_customer = Customer(name=name, user=user, address=address, zip_code=zip_code, weekly_pickup_day=weekly_pickup_day),
+        name = request.POST.get('name')
+        address = request.POST.get('address')
+        zip_code = request.POST.get('zip_code')
+        weekly_pickup_day = request.POST.get('weekly_pickup_day')
+        new_customer = Customer(user=user, name=name, address=address, zip_code=zip_code, weekly_pickup_day=weekly_pickup_day)
         new_customer.save()
         return HttpResponseRedirect(reverse('customers:index'))
     else:
