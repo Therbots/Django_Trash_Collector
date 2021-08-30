@@ -1,5 +1,11 @@
+from typing import Reversible
+from django.urls import reverse
+from django.db import models
+from django.http.response import HttpResponseRedirect
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 from .models import Customer
 # Create your views here.
 
@@ -21,3 +27,16 @@ def index(request):
 
     print(user)
     return render(request, 'customers/index.html')
+
+def create(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        user = request.user
+        address = request.POST.get('address'),
+        zip_code = request.POST.get('zip_code'),
+        weekly_pickup_day = request.POST.get('weekly_pickup_day'),
+        new_customer = Customer(name=name, user=user, address=address, zip_code=zip_code, weekly_pickup_day=weekly_pickup_day),
+        new_customer.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        return render(request, 'customers/create.html')
