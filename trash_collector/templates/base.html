@@ -8,7 +8,11 @@
 {% if user.is_authenticated %}
   {% for group in user.groups.all%}
     {% if group.name == "Customers" %}
-    <p>Customer Navbar</p>
+    {% block nav %}
+    <ul id="nav">
+      <li>{% block nav-index %}<a href="{% url 'customers:index' %}">Home</a>{% endblock %}</li>
+    </ul>
+    {% endblock %}
     {% elif group.name == "Employees" %}
     <p>Employee Navbar</p>
     {% endif %}
