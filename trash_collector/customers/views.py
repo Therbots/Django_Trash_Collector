@@ -19,7 +19,7 @@ def index(request):
         logged_in_customer = Customer.objects.get(user=user)
     except:
         # TODO: Redirect the user to a 'create' function to finish the registration process if no customer record found
-        pass
+        return render(request, 'customers/create.html')
 
     # It will be necessary while creating a Customer/Employee to assign request.user as the user foreign key
 
@@ -41,4 +41,8 @@ def create(request):
 
 def details(request):
     user = request.user
-    return render(request, 'customers/details.html')
+    single_user = Customer.objects.get(user=user)
+    context = {
+        'single_user' : single_user
+    }
+    return render(request, 'customers/details.html', context)
