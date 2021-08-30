@@ -38,3 +38,7 @@ def create(request):
         return HttpResponseRedirect(reverse('customers:index'))
     else:
         return render(request, 'customers/create.html')
+
+def details(request):
+    user = request.user
+    return render(request, 'customers/details.html')
