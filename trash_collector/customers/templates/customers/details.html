@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Info</title>
-</head>
-<body>
-    <h1>Account Information</h1>
-    <ul>
-        <li><h2>Name: {{single_user.name}}</h2></li>
-        <li><h2>Address: {{single_user.address}}</h2></li>
-        <li><h2>Zip Code: {{single_user.zip_code}}</h2></li>
-        <li><h2>Balance: {{single_user.balance}}</h2></li>
-        <li><h2>Weekly Pickup Day:  {{single_user.weekly_pickup_day}}</h2></li>
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
+
+
+{% block title %} Account Information {% endblock %}
+
+{% block header %} Account Information {% endblock %}
+
+{% block content %}
+<ul>
+    <li><h2>Name: {{single_user.name}}</h2></li>
+    <li><h2>Address: {{single_user.address}}</h2></li>
+    <li><h2>Zip Code: {{single_user.zip_code}}</h2></li>
+    <li><h2>Balance: {{single_user.balance}}</h2></li>
+    <li><h2>Weekly Pickup Day:  {{single_user.weekly_pickup_day}}</h2></li>
+</ul>
+{% endblock %}

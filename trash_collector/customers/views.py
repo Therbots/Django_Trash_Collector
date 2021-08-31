@@ -60,3 +60,16 @@ def suspend(request):
             'single_user' : single_user
         }
     return render(request, 'customers/suspend.html', context)
+
+def weekly(request):
+    user = request.user
+    single_user = Customer.objects.get(user=user)
+    if request.method =="POST":
+        single_user.weekly_pickup_day = request.POST.get('weekly_pickup_day')
+        single_user.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        context = {
+        'single_user' : single_user
+    }
+    return render(request, 'customers/weekly.html', context)
