@@ -46,3 +46,6 @@ def details(request):
         'single_user' : single_user
     }
     return render(request, 'customers/details.html', context)
+
+def weekly(request):
+    pass

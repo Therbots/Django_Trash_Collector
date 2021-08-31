@@ -12,6 +12,7 @@
     <ul id="nav">
       <li>{% block nav-index %}<a href="{% url 'customers:index' %}">Home</a>{% endblock %}</li>
       <li>{% block nav-details %}<a href="{% url 'customers:details' %}">Account</a>{% endblock %}</li>
+      <li>{% block nav-weekly %}<a href="{% url 'customers:weekly' %}">Change Pickup Day</a>{% endblock %}</li>
     </ul>
     {% endblock %}
     {% elif group.name == "Employees" %}
