@@ -46,3 +46,17 @@ def details(request):
         'single_user' : single_user
     }
     return render(request, 'customers/details.html', context)
+
+def suspend(request):
+    user = request.user
+    single_user = Customer.objects.get(user=user)
+    if request.method =="POST":
+        single_user.suspend_start = request.POST.get('suspend_start')
+        single_user.suspend_end = request.POST.get('suspend_end')
+        single_user.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        context = {
+            'single_user' : single_user
+        }
+    return render(request, 'customers/suspend.html', context)

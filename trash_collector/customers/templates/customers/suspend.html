@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{# This top line allows this template to utilizing the styling and layout from the base. All your templates should do the same. #}
+
+{% block title %} Suspend Account {% endblock %}
+
+{% block header %} Customer Suspend Account {% endblock %}
+
+{% block content %}
+    <form action="{% url 'customers:suspend' %}" method="post">
+        {% csrf_token %}
+        Suspend Start: <input type="text" name="suspend_start" id="suspend_start" value="{{updated_start_date.suspend_start}}"><br/>
+        Suspend End: <input type="text" name="suspend_end" id="suspend_end" value="{{updated_end_date.suspend_end}}"><br/>
+        <input type="submit" value="Suspend"><br/>
+    </form>
+{% endblock %}
