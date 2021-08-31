@@ -11,5 +11,6 @@ urlpatterns = [
     path('create/', views.create, name="create"),
     path('details/', views.details, name="details"),
     path('suspend/', views.suspend, name="suspend"),
-    path('weekly/', views.weekly, name="weekly")
+    path('weekly/', views.weekly, name="weekly"),
+    path('special/', views.special, name="special")
 ]
