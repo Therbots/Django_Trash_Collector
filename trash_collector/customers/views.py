@@ -75,4 +75,11 @@ def weekly(request):
     return render(request, 'customers/weekly.html', context)
 
 def special(request):
-    pass
+    user = request.user
+    single_user = Customer.objects.get(user=user)
+    if request.method == "POST":
+        single_user.one_time_pickup = request.POST.get('one_time_pickup')       
+        single_user.save()
+        return HttpResponseRedirect(reverse('customers:index'))
+    else:
+        return render(request, 'customers/special.html')

@@ -6,5 +6,9 @@
 {% block header %} Special One Time Pickup {% endblock %}
 
 {% block content %}
-
+    <form action="{% url 'customers:special' %}" method="post">
+        {% csrf_token %}
+        One Time Pickup: <input type="text" name="one_time_pickup" id="one_time_pickup" value="{{new_one_time_pickup.one_time_pickup}}"><br/>
+        <input type="submit" value="Submit">
+    </form>
 {% endblock %}
