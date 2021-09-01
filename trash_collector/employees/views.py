@@ -26,7 +26,7 @@ def index(request):
         return render(request, 'employees/create.html')
     # This line will get the Customer model from the other app, it can now be used to query the db for Customers
     Customer = apps.get_model('customers.Customer')
-    all_customers = Customer.objects.filter(zip_code=employee_zip, weekly_pickup_day=str_day) | Customer.objects.filter(zip_code=employee_zip, one_time_pickup=today)
+    all_customers = Customer.objects.filter(zip_code=employee_zip, weekly_pickup_day=str_day) | Customer.objects.filter(zip_code=employee_zip, one_time_pickup=today) and Customer.objects.filter(zip_code=employee_zip, suspend_start__gte=today, suspend_end__lte=today) | Customer.objects.filter(zip_code=employee_zip, suspend_start__isnull=True, suspend_end__isnull=True)
     return render(request, 'employees/index.html', {'all_customers' : all_customers})
 
 
