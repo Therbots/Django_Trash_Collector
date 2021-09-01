@@ -13,7 +13,7 @@ from .models import Customer
 def index(request):
     # The following line will get the logged-in in user (if there is one) within any view function
     user = request.user
-
+    
     try:
         # This line inside the 'try' will return the customer record of the logged-in user if one exists
         logged_in_customer = Customer.objects.get(user=user)

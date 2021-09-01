@@ -13,7 +13,8 @@ from django.apps import apps
 def index(request):
 
     user = request.user
-
+    single_user = Employee.objects.get(user=user)
+    employee_zip = single_user.zip_code
     try:
         # This line inside the 'try' will return the customer record of the logged-in user if one exists
         logged_in_employee = Employee.objects.get(user=user)
@@ -22,7 +23,8 @@ def index(request):
         return render(request, 'employees/create.html')
     # This line will get the Customer model from the other app, it can now be used to query the db for Customers
     Customer = apps.get_model('customers.Customer')
-    return render(request, 'employees/index.html')
+    all_customers = Customer.objects.filter(zip_code = employee_zip)
+    return render(request, 'employees/index.html', {'all_customers':all_customers})
 
 def create(request):
     if request.method == "POST":
