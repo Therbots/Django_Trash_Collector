@@ -6,11 +6,11 @@
   {% if user.is_authenticated %}
     Hello Employee {{ user.username }}!
     <ul>
-      Customers in your area:
+      Customers in your area ready for pickup:
       {% for customer in all_customers %}
       <li><h3>{{customer}}</h3></li>
       {% endfor %}
-      </ul>
+    </ul>
   {% else %}
     <p>You are at the employee index, but you are not logged in.</p>
     <a href="{% url 'login' %}">Log In</a>
