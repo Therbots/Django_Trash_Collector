@@ -6,9 +6,9 @@
 {% block header %} Confirm Pickup {% endblock %}
 
 {% block content %}
-<form action="{% url 'customers:weekly' %}" method="post">
-    {% csrf_token %}
-    Confirm pickup: {{customer_pickup.name}} 
-    <input type="submit" value="Confirm">
-</form>
+    <form action="{% url 'employees:confirm' customer_pickup.id %}" method="post">
+        {% csrf_token %}
+        Confirm pickup: {{customer_pickup.name}}
+        <input type="submit" value="Confirm">
+    </form>
 {% endblock %}

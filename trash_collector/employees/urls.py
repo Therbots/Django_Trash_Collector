@@ -9,5 +9,5 @@ app_name = "employees"
 urlpatterns = [
     path('', views.index, name="index"),
     path('create/', views.create, name="create"),
-    path('confirm/<int:user_id>', views.confirm, name="confirm")
+    path('confirm/', views.confirm, name="confirm")
 ]
